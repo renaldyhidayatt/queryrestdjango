@@ -23,7 +23,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     ordering = ('id')
     lookup_field = ('name')
 
-    authentication_classes = [IsAuthenticated]
+    authentication_classes = [IsAuthenticated,]
 
     def get_queryset(self):
         address = self.request.query_params.get('address', None)
@@ -126,7 +126,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
 class ProfessionViewSet(viewsets.ModelViewSet):
     queryset = Profession.objects.all()
     serializer_class = ProfessionSerializer
-    permission_classes = [IsAdminUser,]
+    permission_classes = [IsAuthenticated,]
 
 
 class DataSheetViewSet(viewsets.ModelViewSet):
